@@ -1,3 +1,4 @@
+// ÜÇ NOKTA OLUŞTURULACAK. BU ÜÇ NOKTA İÇİNDE OLUŞTURULAN ÜÇGENİN ÇEVRESİ VE ALANI HESAPLANACAK.
 - Ücgenin cevresi ve alani
 
     - class 
