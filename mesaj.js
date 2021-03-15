@@ -1,43 +1,55 @@
 class Bildirim {
-    gonder = () => {
-        var eposta = new EpostaBildirim();
-        eposta.gonder();
-
+    gonder = (gelenClass) => {
+        gelenClass.gonder();
         console.log('Bildirim yapildi');
+        console.log('----------------------');
+        console.log('');
     }
 }
 
+// Interface (Java, C#) (Aslinda Abstract class)
 class Mesaj {
-    constructor (mesaj){
+    constructor(mesaj) {
         this.mesaj = mesaj;
+    }
+    gonder = () => {
+        console.log('')
+        console.log('----------------------');
+        console.log(`Bu mesaj bir ${this.mesaj} dir.`);
+    }
+}
 
+class EpostaBildirim extends Mesaj {
+    constructor(gelenMesaj) {
+        super(gelenMesaj);
+    }
+}
+
+class SmsBildirm extends Mesaj {
+    constructor(gelenMesaj) {
+        super(gelenMesaj);
     }
 }
 
 
-
-class EpostaBildirim  extends Mesaj{
-    gonder = () => {
-        console.log ('Eposta gönderildi.');
-    }
-    gonder = () => {
-        console.log ('_________________');
-        console.log (`Bu mesaj bir ${this.mesaj}dir.`)
-
+class FaxBildirim extends Mesaj {
+    constructor(gelenMesaj) {
+        super(gelenMesaj);
     }
 }
-
-
-//BUTANA BASILILARAK ÇALIŞTIRDIK.
 
 const buttonClicked = () => {
-    var bildirim =new Bildirim ();
-    bildirim.gonder();
+    var bildirim = new Bildirim();
+    bildirim.gonder(new EpostaBildirim('Email mesaji'))
+    // bildirim.gonder(new SmsBildirm('SMS mesaji'))
+    // bildirim.gonder(new FaxBildirim('Fax mesaji'));
 }
 
 buttonClicked();
 
-var bildirim = new Bildirim();
-bildirim.gonder();
 
-//ŞİRKET POLİTİKASI DEĞİŞTİ VE SMS GÖNDERME KARARI ALDI.
+
+// SOLID 
+// Dependency Inversion
+
+// sirket politikasi degisti ve SMS gonderme karari aldi.
